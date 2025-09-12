@@ -133,5 +133,13 @@ def home():
     return '🌱 KilimoScan is Up and Running — Made with Tiffany & your boy ByteCraft404!'
 
 
+# Endpoint to check model status
+@app.route('/model-status', methods=['GET'])
+def model_status():
+    if model is not None:
+        return jsonify({'model_loaded': True}), 200
+    else:
+        return jsonify({'model_loaded': False}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
