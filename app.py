@@ -5,8 +5,8 @@ import io
 import os
 
 import tensorflow as tf
-from tensorflow.keras.models import load_model  # type: ignore
-from tensorflow.keras.utils import img_to_array  # type: ignore
+from tensorflow.keras.models import load_model  
+from tensorflow.keras.utils import img_to_array 
 
 from flask_cors import CORS
 
@@ -91,7 +91,7 @@ def predict():
         return jsonify({'error': 'No image uploaded'}), 400
 
     image_file = request.files['image']
-    print(f"📥 Received file: {image_file.filename}")
+    print(f"Received file: {image_file.filename}")
 
     if not image_file.filename.lower().endswith(('png', 'jpg', 'jpeg')):
         return jsonify({'error': 'Invalid file type. Only PNG, JPG, and JPEG are allowed'}), 400
@@ -130,10 +130,9 @@ def predict():
 
 @app.route('/')
 def home():
-    return '🌱 KilimoScan is Up and Running — Made with Tiffany & your boy ByteCraft404!'
+    return 'KilimoScan is Up and Running — Made with Tiffany & your boy ByyteCraft'
 
 
-# Endpoint to check model status
 @app.route('/model-status', methods=['GET'])
 def model_status():
     if model is not None:
